@@ -16,5 +16,3 @@ else
 fi
 
 git checkout main
-
-
