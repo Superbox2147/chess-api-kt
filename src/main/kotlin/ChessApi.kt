@@ -2,14 +2,33 @@ package chess.api
 
 import com.sun.jna.Pointer
 import com.sun.jna.ptr.IntByReference
+import java.io.File
+import java.io.FileOutputStream
+import java.io.InputStream
 import java.nio.file.Paths
+
 
 /**
  * Bindings for the C Chess API
  */
 object ChessApi {
     init {
-        System.setProperty("jna.library.path", "${Paths.get("").toAbsolutePath()}/native")
+        val libraryName = "libchessapi.so"
+        val jniFolder = Paths.get(System.getProperty("java.io.tmpdir"), "chessapi").toFile()
+        jniFolder.mkdirs()
+        // Extract the library from the JAR
+        val `in`: InputStream = ChessApi::class.java.getResourceAsStream("/$libraryName")!!
+        val tempFile = File(jniFolder,libraryName)
+        tempFile.deleteOnExit()
+
+        FileOutputStream(tempFile).use { out ->
+            val buffer = ByteArray(1024)
+            var bytesRead: Int
+            while ((`in`.read(buffer).also { bytesRead = it }) != -1) {
+                out.write(buffer, 0, bytesRead)
+            }
+        }
+        System.setProperty("jna.library.path", jniFolder.absolutePath.toString())
     }
 
     private val nativeBindings = NativeBindings.INSTANCE
