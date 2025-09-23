@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "2.1.20"
+    `maven-publish`
 }
 
 group = "chess.api"
@@ -38,11 +39,15 @@ tasks.register("buildBinary", Exec::class.java) {
 sourceSets {
     main {
         resources {
-            srcDir("build/binary/out")
+            srcDir("binary/out")
         }
     }
 }
 
-tasks.classes.configure {
-    dependsOn("buildBinary")
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            from(components["java"])
+        }
+    }
 }
