@@ -16,12 +16,13 @@ dependencies {
 or via maven:
 pom.xml
 ```xml
+
 <repositories>
-		<repository>
-		    <id>jitpack.io</id>
-		    <url>https://www.jitpack.io</url>
-		</repository>
-	</repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://www.jitpack.io</url>
+    </repository>
+</repositories>
 ```
 dependency:
 ```xml
