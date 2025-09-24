@@ -5,10 +5,11 @@
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="$PROJECT_DIR$/../../programs/gradle-8.10.2-all/gradle-8.10.2" />
+        <option name="gradleHome" value="$USER_HOME$/programs/gradle-8.10.2-all/gradle-8.10.2" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/testbot" />
           </set>
         </option>
       </GradleProjectSettings>

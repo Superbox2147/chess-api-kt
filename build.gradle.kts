@@ -12,7 +12,7 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
-    implementation("net.java.dev.jna:jna:5.17.0")
+    api("net.java.dev.jna:jna:5.17.0")
 }
 
 tasks.test {

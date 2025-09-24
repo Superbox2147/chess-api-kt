@@ -2,7 +2,7 @@
 
 mkdir -p ./build/binary
 cd ./build/binary
-git init >> /dev/null
+git init
 # Define the repository URL
 REPO_URL="https://github.com/shiro-nya/2025-chess-bot-tournament.git"
 
@@ -15,4 +15,5 @@ else
     echo "Remote 'origin' added."
 fi
 
-git checkout main
+git checkout -b main
+git pull origin main
